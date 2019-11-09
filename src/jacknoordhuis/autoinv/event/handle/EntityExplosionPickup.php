@@ -40,7 +40,7 @@ class EntityExplosionPickup extends EventHandler {
 		$explosive = $event->getEntity();
 		$closest = PHP_INT_MAX;
 		$entity = null;
-		foreach($explosive->getLevel()->getNearbyEntities($explosive->getBoundingBox()->grow(24, 24, 24)) as $nearby) {
+		foreach($explosive->getLevel()->getNearbyEntities($explosive->getBoundingBox()->expand(24, 24, 24)) as $nearby) {
 			if($nearby instanceof InventoryHolder and $explosive->distance($nearby) <= $closest) {
 				$entity = $nearby;
 				$closest = $explosive->distance($nearby);
